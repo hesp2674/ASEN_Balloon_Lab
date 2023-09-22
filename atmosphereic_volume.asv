@@ -1,0 +1,33 @@
+close; clear all; clc;
+
+finalAltitude = 30000;
+
+data = zeros(finalAltitude+1,2);
+
+T = 0;
+a = 0;
+P = 0;
+rho = 0;
+
+V = 0;
+
+V0 = 0.012;
+[T,a,P,rho] = atmoscoesa(0);
+
+m = rho * V0;
+
+
+for i = 1:finalAltitude+1
+       [T,a,P,rho] = atmoscoesa(i);
+       V = findV(m, rho);
+       data(i,1) = i;
+       data(i,2) = V;
+
+end
+
+
+plot(data(:,1),data(:,2));
+
+function V = findV(m, rho)
+    V = m/rho;
+end
