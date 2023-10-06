@@ -20,7 +20,6 @@ m = rho0 * V0;
 [T,a,P,rho] = atmoscoesa(0:finalAltitude);
 
 
-
 V = m./rho;
 
 
@@ -30,7 +29,7 @@ title('Altitude vs. Volume')
 ylabel('Volume (m^3)')
 xlabel('Altitude (m)')
 
-savefig('volume.fig')
+saveas(gcf, 'volume.png')
 
 
 
